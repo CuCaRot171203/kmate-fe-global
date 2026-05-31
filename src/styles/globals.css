@@ -1,0 +1,538 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+  --primary: #7C4DFF;
+  --primary-glow: rgba(124, 77, 255, 0.4);
+  --glass-border: rgba(124, 77, 255, 0.2);
+  --glass-bg: rgba(11, 11, 15, 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 11, 11, 15;
+    --background-end-rgb: 11, 11, 15;
+  }
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background-color: #0B0B0F;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-primary text-white rounded-lg font-medium
+           hover:bg-primary-600 transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-gray-200 dark:bg-dark-200 text-gray-900 dark:text-white
+           rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-dark-100
+           transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 dark:border-dark-200
+           rounded-lg bg-white dark:bg-dark-300 text-gray-900 dark:text-white
+           focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
+           placeholder-gray-400 dark:placeholder-gray-500;
+  }
+
+  .card {
+    @apply bg-white dark:bg-dark-200 rounded-xl shadow-lg
+           border border-gray-100 dark:border-dark-100;
+  }
+
+  /* Glass effect - Landing page style */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+
+  /* Glow hover effect */
+  .glow-hover {
+    box-shadow: 0 0 20px var(--primary-glow);
+    border-color: rgba(124, 77, 255, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .glow-hover:hover {
+    box-shadow: 0 0 30px rgba(124, 77, 255, 0.5);
+    border-color: rgba(124, 77, 255, 0.7);
+  }
+
+  /* Neon text effect */
+  .neon-text {
+    text-shadow: 0 0 10px rgba(124, 77, 255, 0.6);
+  }
+
+  /* Glass effect navbar */
+  .glass-effect {
+    background: rgba(11, 11, 15, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+
+  /* Material Symbols icon sizing */
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-dark-300;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-dark-100 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-dark-200;
+}
+
+/* User dashboard specific glass/card styles */
+.user-glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+.user-neon-blue {
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+}
+.user-neon-purple {
+  box-shadow: 0 0 10px rgba(124, 77, 255, 0.2);
+  border: 1px solid rgba(124, 77, 255, 0.4);
+}
+.bg-gradient-cyber {
+  background: radial-gradient(circle at 0% 0%, rgba(124, 77, 255, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 100% 100%, rgba(0, 229, 255, 0.1) 0%, transparent 50%);
+}
+.text-glow-primary {
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+.user-glass-header {
+  background: rgba(11, 11, 15, 0.85) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(124, 77, 255, 0.2);
+  position: relative;
+}
+.user-glass-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124, 77, 255, 0.4), transparent);
+}
+.user-glass-sidebar {
+  background: rgba(11, 11, 15, 0.85) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(124, 77, 255, 0.2);
+  position: relative;
+}
+.user-glass-sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(124, 77, 255, 0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 50% 100%, rgba(124, 77, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.user-glass-sidebar > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Sidebar collapse transition */
+.ant-layout-sider {
+  transition: width 0.3s ease !important;
+}
+
+/* Antd Select — dark glass theme */
+.ant-select .ant-select-selector {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  color: white !important;
+  padding: 4px 12px !important;
+  height: auto !important;
+  font-size: 14px !important;
+}
+.ant-select .ant-select-selector:hover {
+  border-color: rgba(124, 77, 255, 0.4) !important;
+}
+.ant-select .ant-select-selection-placeholder,
+.ant-select .ant-select-selection-item {
+  color: #94a3b8 !important;
+  line-height: 1.5 !important;
+}
+.ant-select .ant-select-arrow {
+  color: #94a3b8 !important;
+}
+.ant-select-dropdown {
+  background: rgba(11, 11, 15, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+.ant-select-item {
+  color: #cbd5e1 !important;
+  font-size: 13px !important;
+  border-radius: 6px !important;
+  margin: 2px 4px !important;
+}
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background: rgba(124, 77, 255, 0.15) !important;
+}
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background: rgba(124, 77, 255, 0.25) !important;
+  color: #00e5ff !important;
+  font-weight: 600 !important;
+}
+.ant-select-clear {
+  background: transparent !important;
+  color: #94a3b8 !important;
+}
+
+/* Tooltip — black background, white text */
+.ant-tooltip .ant-tooltip-inner {
+  background-color: #111827 !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  border-radius: 8px !important;
+  padding: 6px 12px !important;
+}
+.ant-tooltip .ant-tooltip-arrow::before,
+.ant-tooltip .ant-tooltip-arrow::after {
+  background-color: #111827 !important;
+}
+.video-js {
+  @apply rounded-lg overflow-hidden;
+}
+
+/* Learning Player specific styles */
+.player-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.player-container:fullscreen {
+  aspect-ratio: unset;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Subtitle overlay styles */
+.subtitle-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.subtitle-overlay.bottom {
+  bottom: 5rem;
+}
+
+.subtitle-overlay.top {
+  top: 1rem;
+}
+
+.subtitle-text {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+/* Clickable subtitle words */
+.subtitle-word {
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.subtitle-word:hover {
+  color: theme('colors.primary.300');
+  text-decoration: underline;
+}
+
+/* Timeline bar styles */
+.timeline-track {
+  position: relative;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: height 0.15s ease;
+}
+
+.timeline-track:hover {
+  height: 8px;
+}
+
+.timeline-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #7C4DFF;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.timeline-buffered {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.timeline-knob {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: #7C4DFF;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.timeline-track:hover .timeline-knob {
+  opacity: 1;
+}
+
+/* Chapter markers on timeline */
+.chapter-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 3px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 1.5px;
+  cursor: pointer;
+}
+
+.chapter-marker:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Animations */
+.animate-in {
+  animation: animateIn 0.3s ease-out;
+}
+
+@keyframes animateIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smart Waiting Module Animations */
+
+/* Animated gradient background for waiting page */
+.waiting-gradient {
+  background: linear-gradient(
+    -45deg,
+    #0f172a,
+    #1e293b,
+    #0c1929,
+    #0f172a
+  );
+  background-size: 400% 400%;
+  animation: waitingGradient 15s ease infinite;
+}
+
+@keyframes waitingGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Progress ring pulse */
+.progress-ring-active {
+  animation: progressRingPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressRingPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.02); }
+}
+
+/* Stage pulse glow */
+.stage-pulse {
+  animation: stagePulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes stagePulseGlow {
+  0%, 100% { box-shadow: 0 0 5px rgba(14, 165, 233, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.6); }
+}
+
+/* Redirect checkmark animation */
+.redirect-checkmark {
+  animation: checkmarkDraw 0.5s ease-out forwards;
+}
+
+@keyframes checkmarkDraw {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* Short video card entrance */
+.short-card-enter {
+  animation: shortCardEnter 0.3s ease-out forwards;
+}
+
+@keyframes shortCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Staggered card animation */
+.short-card-stagger > * {
+  animation: shortCardEnter 0.3s ease-out forwards;
+  opacity: 0;
+}
+
+.short-card-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.short-card-stagger > *:nth-child(2) { animation-delay: 50ms; }
+.short-card-stagger > *:nth-child(3) { animation-delay: 100ms; }
+.short-card-stagger > *:nth-child(4) { animation-delay: 150ms; }
+.short-card-stagger > *:nth-child(5) { animation-delay: 200ms; }
+.short-card-stagger > *:nth-child(6) { animation-delay: 250ms; }
+.short-card-stagger > *:nth-child(7) { animation-delay: 300ms; }
+.short-card-stagger > *:nth-child(8) { animation-delay: 350ms; }
+
+/* Loading skeleton shimmer */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #1e293b 0%,
+    #334155 50%,
+    #1e293b 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease infinite;
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Spinner */
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #0ea5e9;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Connection status indicator */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.connected {
+  background-color: #22c55e;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.status-dot.reconnecting {
+  background-color: #f59e0b;
+  animation: statusBlink 1s ease-in-out infinite;
+}
+
+.status-dot.disconnected {
+  background-color: #ef4444;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes statusBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}

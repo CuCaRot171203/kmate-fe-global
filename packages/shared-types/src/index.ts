@@ -1,0 +1,48 @@
+// Re-export everything from subdirectories
+export * from './enums';
+export * from './entities';
+export * from './websocket';
+
+// Re-export API types (entities re-export the entity types, not api types)
+export type {
+  ApiResponse,
+  ApiError,
+  PaginatedResponse,
+  PaginationMeta,
+  PaginationQuery,
+  LoginRequest,
+  RegisterRequest,
+  AuthResponse,
+  RefreshTokenRequest,
+  RefreshTokenResponse,
+  VideoSearchQuery,
+  VideoSearchResponse,
+  UnlockVideoRequest,
+  UnlockVideoResponse,
+  CreatePaymentRequest,
+  CreatePaymentResponse,
+  PaymentCallbackPayload,
+  CoinBalanceResponse,
+  CoinTransactionQuery,
+  CreateFlashcardRequest,
+  UpdateFlashcardRequest,
+  FlashcardReviewRequest,
+  FlashcardReviewResponse,
+  QuizQuestionResponse,
+  SubmitQuizRequest,
+  QuizResultResponse,
+  NotificationQuery,
+  MarkNotificationsReadRequest,
+  RegisterPushTokenRequest,
+  AdminUserQuery,
+  AdminAnalyticsQuery,
+  AdminTransactionQuery,
+  AdminAIJobQuery,
+  RetryAIJobRequest,
+  ToggleFeatureRequest,
+  BanUserRequest,
+  UpdateProfileRequest,
+  ChangePasswordRequest,
+  SubtitleResponse,
+  ProcessSubtitleRequest,
+} from './api';
